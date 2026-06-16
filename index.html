@@ -54,7 +54,17 @@
         .delay-300 { transition-delay: 300ms; }
         .img-grid-container { position: relative; height: 600px; }
         @media (max-width: 768px) { .img-grid-container { height: 400px; margin-top: 2rem; } }
-        .hero-bg { background-image: url('IMG_0764_WEBSITE.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
+        
+        /* Modificación: Quitamos el fixed en móviles y lo dejamos solo para escritorio */
+        .hero-bg { 
+            background-image: url('IMG_0764_WEBSITE.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+        @media (min-width: 768px) {
+            .hero-bg { background-attachment: fixed; }
+        }
+        
         .hero-overlay { background: linear-gradient(to bottom, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.7) 100%); }
         @keyframes fadeInUpHero { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .hero-animate { opacity: 0; animation: fadeInUpHero 2s ease-out forwards; }
