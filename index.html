@@ -69,6 +69,19 @@
         @keyframes fadeInUpHero { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .hero-animate { opacity: 0; animation: fadeInUpHero 2s ease-out forwards; }
         .hero-animate-delay { opacity: 0; animation: fadeInUpHero 2s ease-out 1s forwards; }
+        /* Ocultar la barra de scroll nativa del slider */
+        #proj-track::-webkit-scrollbar {
+        display: none;
+}
+#proj-track {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+    cursor: grab; /* Muestra una manito indicando que se puede deslizar */
+}
+#proj-track:active {
+    cursor: grabbing; /* La manito se cierra al hacer clic */
+}
+    
     </style>
 </head>
 <body class="antialiased selection:bg-tragaluz-dark selection:text-white">
