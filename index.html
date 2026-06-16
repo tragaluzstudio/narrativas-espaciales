@@ -115,7 +115,7 @@
                 </h2>
             </div>
 
-            <div class="mb-24 reveal delay-100">
+            <div class="mb-8 reveal delay-100">
                 <p class="text-gray-600 font-sans font-light leading-relaxed text-lg max-w-3xl">
                     Con una mirada sensible y precisa resaltamos las cualidades de cada proyecto, registramos desde los procesos creativos, ejecución de obra, hasta la experiencia del proyecto terminado, traduciendo desde el lente las intenciones de sus creadores, para construir las narrativas editoriales que relatan y comunican la intención de diseño, el carácter y la atmósfera de cada proyecto.
                 </p>
@@ -129,22 +129,19 @@
     </section>
 
     <!-- SLIDER DE PROYECTOS -->
-    <div class="w-full overflow-hidden" style="background:#F9F8F6;">
+    <div class="w-full overflow-x-auto flex snap-x snap-mandatory scroll-smooth" style="background:#F9F8F6;">
         <style>
             .proj-slide {
                 flex-shrink: 0;
                 aspect-ratio: 4/3;
                 width: calc((100vw - 24px) / 1.15);
+                scroll-snap-align: center;
             }
             @media (min-width: 640px)  { .proj-slide { width: calc((100vw - 24px) / 2); } }
             @media (min-width: 1024px) { .proj-slide { width: calc((100vw - 36px) / 3); } }
         </style>
 
-        <div class="flex gap-3 py-3"
-             id="proj-track"
-             style="transform:translateX(0);
-                    transition:transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
-                    will-change:transform;">
+        <div class="flex gap-3 py-3 overflow-x-auto snap-x snap-mandatory scroll-smooth" id="proj-track">
 
             <!-- ▸ SLIDE 1 -->
             <div class="proj-slide">
@@ -173,43 +170,6 @@
 
         </div>
     </div>
-    <script>
-    (function () {
-        var track = document.getElementById('proj-track');
-        if (!track) return;
-        var slides   = track.querySelectorAll('.proj-slide');
-        var current  = 0;
-        var paused   = false;
-
-        function getStep() {
-            return slides[0].offsetWidth + 12; /* slide width + gap-3 (12px) */
-        }
-        function visibleCount() {
-            var w = window.innerWidth;
-            return w >= 1024 ? 3 : w >= 640 ? 2 : 1;
-        }
-        function advance() {
-            if (paused) return;
-            var max = slides.length - visibleCount();
-            if (current >= max) {
-                /* jump back silently, then continue */
-                track.style.transition = 'none';
-                track.style.transform  = 'translateX(0)';
-                void track.offsetWidth; /* force reflow */
-                track.style.transition = 'transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94)';
-                current = 0;
-                return;
-            }
-            current++;
-            track.style.transform = 'translateX(-' + (current * getStep()) + 'px)';
-        }
-
-        track.parentElement.addEventListener('mouseenter', function () { paused = true; });
-        track.parentElement.addEventListener('mouseleave', function () { paused = false; });
-
-        setInterval(advance, 4000);
-    })();
-    </script>
 
     </section>
 
